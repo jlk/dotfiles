@@ -1,0 +1,65 @@
+alias edit='open -e'
+alias ll='ls -l'
+alias lt='ls -lt|head'
+alias lm='ls -l|less'
+alias ..='cd ..'
+alias j=jobs
+alias vi=vim
+alias v='vi + note:notes'
+alias vv='vi + ~/.notes'
+alias vs='vi + ~/Documents/sqlnotes.sql'
+alias vf='vi $(fzf)'
+alias du='du -k'
+alias df='df -k'
+alias mtr='mtr --curses'
+alias drw='ll|grep drw'
+alias grep='egrep --color=auto'
+alias vless='vim -u /usr/share/vim/vim74/macros/less.vim'
+alias vs='vagrant up && vagrant ssh'
+alias dm='docker-machine'
+alias dc='docker-compose'
+alias weather="curl http://wttr.in/~94105"
+alias none="docker rmi \`docker images|grep none|awk '{print \$3}'\`"
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/
+export EDITOR=vim
+export LESS="-R -i"
+export GREP_OPTIONS="--color=always"
+export HISTTIMEFORMAT="%d/%m/%y %T "
+export HISTFILESIZE=5000
+export HISTSIZE=2000
+# Unsetting HISTCONTROL ensures cmds starting with spaces are logged.
+unset HISTCONTROL
+
+export PATH=/usr/local/sbin:/usr/local/bin:$PATH
+
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+        . `brew --prefix`/etc/bash_completion
+fi
+
+export GOPATH=~/code/go
+export PATH=$PATH:$GOPATH/bin
+
+# From http://www.iterm2.com/misc/bash_startup.in
+# Usage: iterm2_set_user_var key value
+function iterm2_begin_osc {
+  printf "\033]"
+}
+function iterm2_end_osc {
+  printf "\007"
+}
+function iterm2_set_user_var() {
+  iterm2_begin_osc
+  printf "1337;SetUserVar=%s=%s" "$1" $(printf "%s" "$2" | base64)
+  iterm2_end_osc
+}
+if [ -e ~/code/docker/contrib/completion/bash ]; then
+  . ~/code/docker/contrib/completion/bash/docker
+fi
+if [ -e ~/code/bash-completion/git-completion.bash ]; then
+  . ~/code/bash-completion/git-completion.bash
+fi
+
+parse_git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'
+}
+export PS1='\[\033]0;\u@\h $DOCKER_HOST\007\]\[\033[00;01m\]\h \[\033[01;36m\]\W\e[33m$(parse_git_branch)\e[36m \$ \[\033[00m\]'

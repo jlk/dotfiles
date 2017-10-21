@@ -1,0 +1,51 @@
+syntax on
+let g:solarized_termcolors=16
+set history=50
+set incsearch
+set ts=8 sw=8 autoindent ignorecase wrapmargin=0 showmode hlsearch
+set viminfo='20,"50
+hi PreProc ctermfg=8
+
+map q !}fmt
+map Q !}fmt\|perl -e \'while(<>){ print \"> $_\";}\' 
+map , :noh
+map <C-n> :NERDTreeToggle<CR>
+
+" au BufNewFile,BufRead *.pp set filetype=ruby
+au BufNewFile,BufRead *.module set filetype=php
+if has("autocmd")
+  augroup jlk
+    " When editing a file, always jump to the last cursor position
+    autocmd BufReadPost *
+    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+    \   exe "normal! g'\"" |
+    \ endif
+    " For nerdtree - 10/21/17
+    " Start nerdtree if no other files mentioned at startup
+    autocmd StdinReadPre * let s:std_in=1
+    autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+    " exit if nerdtree only window open
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+  augroup END
+endif
+
+" Pathogen
+call pathogen#infect()
+call pathogen#helptags()
+ 
+set nocompatible
+set statusline=%<\ %n:%f\ %m%r%y%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
+filetype plugin indent on
+ 
+set showmatch
+set expandtab
+set shiftwidth=4
+
+set wildmenu
+
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
