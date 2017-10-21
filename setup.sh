@@ -11,6 +11,9 @@ echo "Backing up files, if necessary"
 if [ -d ~/.bashrc ]; then
     mv ~/.bashrc ~/.bashrc-$BACKUP_TIMESTAMP
 fi
+if [ -d ~/.bash_login ]; then
+    mv ~/.bash_login ~/.bash_login-$BACKUP_TIMESTAMP
+fi
 if [ -d ~/.vimrc ]; then
     mv ~/.vimrc ~/.vimrc-$BACKUP_TIMESTAMP
 fi
@@ -20,6 +23,7 @@ fi
 
 echo "Setting up dotfiles"
 cp bash/bashrc ~/.bashrc
+cp bash/bash_login ~/.bash_login
 mkdir ~/.vim
 cp vim/vimrc ~/.vimrc
 cp -Rp vim/autoload vim/bundle ~/.vim
