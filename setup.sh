@@ -7,6 +7,7 @@ git submodule init
 git submodule update
 
 # This is fairly quick and dirty - if files we're going to install exist, just move them out of the way as a "backup"
+echo "Backing up files, if necessary"
 if [ -d ~/.bashrc ]; then
     mv ~/.bashrc ~/.bashrc-$BACKUP_TIMESTAMP
 fi
@@ -17,6 +18,7 @@ if [ -d ~/.vim ]; then
     mv ~/.vim ~/.vim-$BACKUP_TIMESTAMP
 fi
 
+echo "Setting up dotfiles"
 cp bash/bashrc ~/.bashrc
 mkdir ~/.vim
 cp vim/vimrc ~/.vimrc
