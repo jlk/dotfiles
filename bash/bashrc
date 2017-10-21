@@ -13,7 +13,6 @@ alias du='du -k'
 alias df='df -k'
 alias mtr='mtr --curses'
 alias drw='ll|grep drw'
-alias grep='egrep --color=auto'
 alias vless='vim -u /usr/share/vim/vim74/macros/less.vim'
 alias vs='vagrant up && vagrant ssh'
 alias dm='docker-machine'
@@ -22,8 +21,6 @@ alias weather="curl http://wttr.in/~94105"
 alias none="docker rmi \`docker images|grep none|awk '{print \$3}'\`"
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/
 export EDITOR=vim
-export LESS="-R -i"
-export GREP_OPTIONS="--color=always"
 export HISTTIMEFORMAT="%d/%m/%y %T "
 export HISTFILESIZE=5000
 export HISTSIZE=2000
@@ -31,6 +28,15 @@ export HISTSIZE=2000
 unset HISTCONTROL
 
 export PATH=/usr/local/sbin:/usr/local/bin:$PATH
+
+# Attempt to detect BusyBox - don't set some things if we're in it.
+cat --help 2>&1 | grep Busy > /dev/null
+if [ $? -eq 1 ]; then
+    echo Not BusyBox.
+    export LESS="-R -i"
+    export GREP_OPTIONS="--color=always"
+    alias grep='egrep --color=auto'
+fi
 
 if [ -e /usr/local/bin/brew ]; then
     if [ -f `brew --prefix`/etc/bash_completion ]; then
