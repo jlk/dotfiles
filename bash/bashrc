@@ -32,7 +32,6 @@ export PATH=/usr/local/sbin:/usr/local/bin:$PATH
 # Attempt to detect BusyBox - don't set some things if we're in it.
 cat --help 2>&1 | grep Busy > /dev/null
 if [ $? -eq 1 ]; then
-    echo Not BusyBox.
     export LESS="-R -i"
     export GREP_OPTIONS="--color=always"
     alias grep='egrep --color=auto'
