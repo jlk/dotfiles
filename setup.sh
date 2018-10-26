@@ -20,10 +20,14 @@ fi
 if [ -d ~/.vim ]; then
     mv ~/.vim ~/.vim-$BACKUP_TIMESTAMP
 fi
+if [ -d ~/.gitignore ]; then
+    mv ~/.gitignore ~/.gitignore-$BACKUP_TIMESTAMP
+fi
 
 echo "Setting up dotfiles"
 cp bash/bashrc ~/.bashrc
 cp bash/bash_login ~/.bash_login
+cp .gitignore ~/.gitignore
 mkdir ~/.vim
 cp vim/vimrc ~/.vimrc
 cp -Rp vim/autoload vim/bundle ~/.vim
