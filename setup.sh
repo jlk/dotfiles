@@ -24,6 +24,19 @@ if [ -d ~/.gitignore ]; then
     mv ~/.gitignore ~/.gitignore-$BACKUP_TIMESTAMP
 fi
 
+# If zsh is around, install ohmyzsh, powerline.
+zsh --version > /dev/null
+if [ $? -eq 0 ]; then
+    if [ -d ~/.oh-my-zsh ]; then
+        mv ~/.oh-my-zsh ~/.oh-my-zah-$BACKUP_TIMESTAMP
+    fi
+    sh -c zsh/ohmyzsh-install.sh
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/custom/themes/powerlevel10k
+    cp zsh/zshrc ~/.zshrc
+    cp zsh/p10k.zsh ~/.p10k.zsh
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+ei
+
 echo "Setting up dotfiles"
 cp bash/bashrc ~/.bashrc
 cp bash/bash_login ~/.bash_login
