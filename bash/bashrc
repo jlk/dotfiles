@@ -33,7 +33,6 @@ export PATH=/usr/local/sbin:/usr/local/bin:$PATH
 cat --help 2>&1 | grep Busy > /dev/null
 if [ $? -eq 1 ]; then
     export LESS="-R -i"
-    export GREP_OPTIONS="--color=always"
     alias grep='egrep --color=auto'
 fi
 
