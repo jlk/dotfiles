@@ -41,6 +41,8 @@ echo "Setting up dotfiles"
 cp bash/bashrc ~/.bashrc
 cp bash/bash_login ~/.bash_login
 cp .gitignore ~/.gitignore
-mkdir ~/.vim
+if [ ! -d ~/.vim ]; then
+    mkdir ~/.vim
+fi
 cp vim/vimrc ~/.vimrc
 cp -Rp vim/autoload vim/bundle ~/.vim
