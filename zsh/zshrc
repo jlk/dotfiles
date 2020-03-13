@@ -130,7 +130,10 @@ alias vs='vagrant up && vagrant ssh'
 alias weather="curl http://wttr.in/~94105"
 alias none="docker rmi \`docker images|grep none|awk '{print \$3}'\`"
 # 6/4/19 - automatically set java_home
-export JAVA_HOME=`/usr/libexec/java_home -v 10.0.2`
+# 3/13/20 - this is an osx thing - only run if it exists.
+if [ -x /usr/libexec/java_home ]; then
+    export JAVA_HOME=`/usr/libexec/java_home -v 10.0.2`
+fi
 #export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/
 export EDITOR=vim
 export HISTTIMEFORMAT="%d/%m/%y %T "
