@@ -35,6 +35,7 @@ if [ $? -eq 0 ]; then
     cp zsh/zshrc ~/.zshrc
     cp zsh/p10k.zsh ~/.p10k.zsh
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    cp zsh/oh-my-zsh.sh ~/.oh-my-zsh
 fi
 
 echo "Setting up dotfiles"
