@@ -25,6 +25,8 @@ if [ -d ~/.gitignore ]; then
 fi
 
 # If zsh is around, install ohmyzsh, powerline.
+echo "If zsh not found error is displayed, ignore."
+set +e
 zsh --version > /dev/null
 if [ $? -eq 0 ]; then
     if [ -d ~/.oh-my-zsh ]; then
@@ -37,6 +39,7 @@ if [ $? -eq 0 ]; then
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
     cp zsh/oh-my-zsh.sh ~/.oh-my-zsh
 fi
+set -e
 
 echo "Setting up dotfiles"
 cp bash/bashrc ~/.bashrc
