@@ -30,7 +30,7 @@ if [ $? -eq 0 ]; then
     if [ -d ~/.oh-my-zsh ]; then
         mv ~/.oh-my-zsh ~/.oh-my-zsh-$BACKUP_TIMESTAMP
     fi
-    sh -c zsh/ohmyzsh-install.sh
+    sh -c zsh/ohmyzsh-install.sh --unattended
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
     cp zsh/zshrc ~/.zshrc
     cp zsh/p10k.zsh ~/.p10k.zsh
