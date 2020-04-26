@@ -19,6 +19,9 @@ alias dm='docker-machine'
 alias dc='docker-compose'
 alias weather="curl http://v2.wttr.in/Mercer\ Island"
 alias none="docker rmi \`docker images|grep none|awk '{print \$3}'\`"
+# Usually commented out - only enable on systems where needed to minimize confusion
+#alias sd="screen -d"
+#alias sr="screen -r"
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/
 export EDITOR=vim
 export HISTTIMEFORMAT="%d/%m/%y %T "
