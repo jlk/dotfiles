@@ -9,6 +9,7 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 path+='/usr/local/sbin'
+path+='/usr/local/opt/openjdk/bin'
 export PATH
 
 # Path to your oh-my-zsh installation.
