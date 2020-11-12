@@ -133,6 +133,7 @@ alias vless='vim -u /usr/share/vim/vim81/macros/less.vim'
 alias vs='vagrant up && vagrant ssh'
 alias weather="curl http://wttr.in/~94105"
 alias none="docker rmi \`docker images|grep none|awk '{print \$3}'\`"
+alias history="history -i"
 # 6/4/19 - automatically set java_home
 # 3/13/20 - this is an osx thing - only run if it exists.
 if [ -x /usr/libexec/java_home ]; then
