@@ -137,7 +137,9 @@ alias history="history -i"
 # 6/4/19 - automatically set java_home
 # 3/13/20 - this is an osx thing - only run if it exists.
 if [ -x /usr/libexec/java_home ]; then
-    export JAVA_HOME=`/usr/libexec/java_home -v 10.0.2`
+    #export JAVA_HOME=`/usr/libexec/java_home -v 10.0.2`
+    # 8/2/21 Try to deal with when no jvm/jre installed 
+    export JAVA_HOME=`/usr/libexec/java_home -v 10.0.2 |& grep -v Java`
 fi
 #export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/
 export EDITOR=vim
