@@ -151,7 +151,7 @@ export HISTSIZE=2000
 setopt NO_SHARE_HISTORY
 
 # Hook in direnv
-if [ -x /usr/local/bin/direnv ]; then
+if [ -x /usr/local/bin/direnv -o /opt/homebrew/bin/direnv ]; then
     eval "$(direnv hook zsh)"
 fi
 
