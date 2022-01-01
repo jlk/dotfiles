@@ -5,6 +5,7 @@ set incsearch
 set ts=8 sw=8 autoindent ignorecase wrapmargin=0 showmode hlsearch
 set viminfo='20,"50
 set bg=dark
+set scrolloff=0 # for amazon linux 1/1/22
 hi PreProc ctermfg=8
 
 map q !}fmt
