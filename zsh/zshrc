@@ -157,3 +157,9 @@ fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Added 10/16/23 - allow completion on "hidden" dirs/files
+setopt globdots
+
+# Added 10/16/23 - don't complete on . ..
+zstyle ':completion:*' special-dirs false
